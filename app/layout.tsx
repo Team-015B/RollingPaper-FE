@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import generateOpenGraph from "@/utils/generateOpenGraph";
+import * as styles from "./layout.css";
 
 export const metadata = generateOpenGraph({
-  title: '선생님 선택',
+  title: '3기 졸업생',
   description: '어떤 선생님에게 편지를 쓰시겠어요?'
 })
 
@@ -14,9 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body>
-        {children}
+        <main className={styles.container}>
+          {children}
+        </main>
       </body>
     </html>
   );  

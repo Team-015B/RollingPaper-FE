@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff') format('woff');
-    font-weight: 100;
+    font-family: 'OnglipJuRiSonPenji';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2405-2@1.0/Ownglyph_jooreeletter-Rg.woff2') format('woff2');
+    font-weight: normal;
     font-display: swap;
 }
 
@@ -27,20 +27,18 @@
   }
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'OnglipJuRiSonPenji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
 html,
 body {
-  font-family: 'Pretendard';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: #1a1f2a;
 }
 
