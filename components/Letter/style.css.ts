@@ -156,18 +156,12 @@ export const optionsGrid = style({
 export const optionButton = style({
   ...font.btn2,
   padding: "12px 16px",
-  border: "2px solid #E5D5C8",
-  backgroundColor: "rgba(255, 255, 255, 0.7)",
+  border: "none",
+  background: "none",
   color: "#666",
   cursor: "pointer",
   textAlign: "center",
-  transition: "all 0.2s",
   borderRadius: "8px",
-  ":hover": {
-    color: "#333",
-    backgroundColor: "white",
-    borderColor: `${theme.cookie}`,
-  },
 });
 
 export const optionButtonSelected = style({
