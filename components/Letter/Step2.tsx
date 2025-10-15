@@ -12,7 +12,7 @@ interface Step2Props {
 const options = [
   '친애하는', '존경하는', '사랑하는', '감사한',
   '잘생긴', '아름다운', '보고싶은', '멋진',
-  '귀여운', '요염한', '내 최애', '잊지 않을',
+  '귀여운', '소중한', '내 최애', '잊지 않을',
 ];
 
 export default function Step2({ 

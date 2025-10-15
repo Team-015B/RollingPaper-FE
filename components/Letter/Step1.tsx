@@ -15,7 +15,7 @@ const teachers: Teacher[] = [
   { id: 'ahn', name: '이수민 선생님', image: '/이수민-선생님.png' },
   { id: 'choi', name: '최훈주 선생님', image: '/최훈주-선생님.png' },
   { id: 'seo', name: '서승범 선생님', image: '/서승범-선생님.png' },
-  { id: 'jung', name: '정영훈 선생님', image: '/정영훈-선생님.png' },
+  { id: 'jung', name: '배나래 선생님', image: '/배나래-선생님.png' },
   { id: 'yoon', name: '이동욱 선생님', image: '/이동욱-선생님.png' },
   { id: 'kang', name: '양윤직 선생님', image: '/양윤직-선생님.png' },
   { id: 'pikachu', name: '이현정 선생님', image: '/이현정-선생님.png' },

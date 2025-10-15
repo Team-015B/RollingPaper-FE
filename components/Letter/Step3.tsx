@@ -12,7 +12,6 @@ interface Step3Props {
 
 export default function Step3({ 
   teacherName,
-  teacherImage,
   greeting,
   onSubmit, 
   onBack 
