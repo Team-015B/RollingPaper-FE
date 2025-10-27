@@ -1,0 +1,1 @@
+export type { default as AuthType } from "./auth.interface";
