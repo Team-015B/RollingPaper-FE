@@ -1,18 +1,18 @@
 import { useState } from "react";
 import * as styles from "./style.css"
 
-interface Step3Props {
+interface Step2Props {
   teacherName: string;
   teacherImage: string;
   onSubmit: (message: string) => void;
   onBack: () => void;
 }
 
-export default function Step3({
+export default function Step2({
   teacherName,
   onSubmit,
   onBack,
-}: Step3Props) {
+}: Step2Props) {
   const [message, setMessage] = useState("");
   const maxLength = 500;
 

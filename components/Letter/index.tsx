@@ -1,9 +1,11 @@
+// index.tsx (LetterWriter 컴포넌트)
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Step1 from "./Step1";
-import Step3 from "./Step3";
+import Step2 from "./Step2";
 import LoginModal from "../Modal";
+import { useStudentProfile } from "@/services/auth/auth.query";
 
 interface Teacher {
   id: string;
@@ -12,21 +14,20 @@ interface Teacher {
 }
 
 export default function LetterWriter() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [step, setStep] = useState(1);
   const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
   const [message, setMessage] = useState("");
-
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
+  
+  // 프로필 쿼리로 로그인 상태 확인
+  const { data: profile, isLoading, isError } = useStudentProfile();
+  const isLoggedIn = !!profile && !isError;
 
   const handleStep1Complete = (teacher: Teacher) => {
     setSelectedTeacher(teacher);
     setStep(3);
   };
 
-  const handleStep3Complete = (msg: string) => {
+  const handleStep2Complete = (msg: string) => {
     setMessage(msg);
     console.log({
       teacher: selectedTeacher,
@@ -41,18 +42,32 @@ export default function LetterWriter() {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div style={{ 
+        display: "flex", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        height: "100vh" 
+      }}>
+        로딩 중...
+      </div>
+    );
+  }
+
+  // 로그인되지 않았을 때
   if (!isLoggedIn) {
-    return <LoginModal onLoginSuccess={handleLoginSuccess} />;
+    return <LoginModal />;
   }
 
   return (
     <div>
       {step === 1 && <Step1 onNext={handleStep1Complete} />}
       {step === 3 && selectedTeacher && (
-        <Step3
+        <Step2
           teacherName={selectedTeacher.name}
           teacherImage={selectedTeacher.image}
-          onSubmit={handleStep3Complete}
+          onSubmit={handleStep2Complete}
           onBack={handleBack}
         />
       )}

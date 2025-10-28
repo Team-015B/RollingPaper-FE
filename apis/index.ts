@@ -6,12 +6,12 @@ export const http = axios.create({
 });
 
 
-http.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      console.error("인증이 필요합니다.");
-    }
-    return Promise.reject(error);
-  }
-);
+// http.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response?.status === 401) {
+//       console.error("인증이 필요합니다.");
+//     }
+//     return Promise.reject(error);
+//   }
+// );

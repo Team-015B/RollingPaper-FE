@@ -14,3 +14,10 @@ export const teacherSignIn = async (auth: AuthType) => {
   });
   return data;
 };
+
+export const studentGetProfile = async () => {
+  const { data } = await http.get("/auth/student/me", {
+    withCredentials: true,
+  });
+  return data;
+};

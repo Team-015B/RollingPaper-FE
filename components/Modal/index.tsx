@@ -3,16 +3,14 @@
 import React, { useState } from "react";
 import * as styles from "./style.css";
 import { useStudentSignInMutation } from "@/services/auth/auth.mutation";
+import { useQueryClient } from "@tanstack/react-query";
 
-interface LoginModalProps {
-  onLoginSuccess: () => void;
-}
-
-export default function LoginModal({ onLoginSuccess }: LoginModalProps) {
+export default function LoginModal() {
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const studentSignIn = useStudentSignInMutation();
+  const queryClient = useQueryClient();
 
   const handleLogin = async () => {
     if (!nickName || !password) {
@@ -26,8 +24,11 @@ export default function LoginModal({ onLoginSuccess }: LoginModalProps) {
       { nickName, password },
       {
         onSuccess: () => {
+          // 로그인 성공 시 프로필 쿼리 무효화하여 자동으로 재요청
+          queryClient.invalidateQueries({ 
+            queryKey: ["student", "profile"] 
+          });
           setIsLoading(false);
-          onLoginSuccess();
           alert("로그인 성공!");
         },
         onError: (error) => {
