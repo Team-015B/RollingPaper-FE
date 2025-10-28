@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import * as styles from './style.css';
-import Image from 'next/image';
+import { useState } from "react";
+import * as styles from "./style.css";
+import Image from "next/image";
 
 interface Teacher {
   id: string;
@@ -9,18 +9,18 @@ interface Teacher {
 }
 
 const teachers: Teacher[] = [
-  { id: 'hwangbo', name: '황정배 선생님', image: '/황정배-선생님.png' },
-  { id: 'lee', name: '이보경 선생님', image: '/이보경-선생님.png' },
-  { id: 'kim', name: '김민정 선생님', image: '/김민정-선생님.png' },
-  { id: 'ahn', name: '이수민 선생님', image: '/이수민-선생님.png' },
-  { id: 'choi', name: '최훈주 선생님', image: '/최훈주-선생님.png' },
-  { id: 'seo', name: '서승범 선생님', image: '/서승범-선생님.png' },
-  { id: 'jung', name: '배나래 선생님', image: '/배나래-선생님.png' },
-  { id: 'yoon', name: '이동욱 선생님', image: '/이동욱-선생님.png' },
-  { id: 'kang', name: '양윤직 선생님', image: '/양윤직-선생님.png' },
-  { id: 'pikachu', name: '이현정 선생님', image: '/이현정-선생님.png' },
-  { id: 'alola', name: '이소라 선생님', image: '/이소라-선생님.png' },
-  { id: 'park', name: '박수진 선생님', image: '/박수진-선생님.png' },
+  { id: "jb", name: "황정배 선생님", image: "/황정배-선생님.png" },
+  { id: "bg", name: "이보경 선생님", image: "/이보경-선생님.png" },
+  { id: "mj", name: "이민정 선생님", image: "/김민정-선생님.png" },
+  { id: "sm", name: "이수민 선생님", image: "/이수민-선생님.png" },
+  { id: "chj", name: "최훈주 선생님", image: "/최훈주-선생님.png" },
+  { id: "sb", name: "서승범 선생님", image: "/서승범-선생님.png" },
+  { id: "nl", name: "배나래 선생님", image: "/배나래-선생님.png" },
+  { id: "dw", name: "이동욱 선생님", image: "/이동욱-선생님.png" },
+  { id: "yg", name: "양윤직 선생님", image: "/양윤직-선생님.png" },
+  { id: "lhj", name: "이현정 선생님", image: "/이현정-선생님.png" },
+  { id: "sr", name: "이소라 선생님", image: "/이소라-선생님.png" },
+  { id: "sj", name: "박수진 선생님", image: "/박수진-선생님.png" },
 ];
 
 interface Step1Props {
@@ -52,14 +52,16 @@ export default function Step1({ onNext }: Step1Props) {
           <button
             key={teacher.id}
             className={`${styles.teacherCard} ${
-              selectedTeacher?.id === teacher.id ? styles.teacherCardSelected : ''
+              selectedTeacher?.id === teacher.id
+                ? styles.teacherCardSelected
+                : ""
             }`}
             onClick={() => handleTeacherClick(teacher)}
           >
-            <Image 
-              src={teacher.image} 
-              alt={teacher.name} 
-              width={48} 
+            <Image
+              src={teacher.image}
+              alt={teacher.name}
+              width={48}
               height={48}
               unoptimized
             />
@@ -69,7 +71,7 @@ export default function Step1({ onNext }: Step1Props) {
       </div>
 
       <div className={styles.buttonGroup}>
-        <button 
+        <button
           className={styles.nextButton}
           onClick={handleNext}
           disabled={!selectedTeacher}

@@ -1,62 +1,55 @@
-import { useState } from 'react';
-import * as styles from './style.css';
-import Image from 'next/image';
+import { useState } from "react";
+import * as styles from "./style.css"
 
 interface Step2Props {
   teacherName: string;
   teacherImage: string;
-  onNext: (option: string) => void;
+  onSubmit: (message: string) => void;
   onBack: () => void;
 }
 
-const options = [
-  '친애하는', '존경하는', '사랑하는', '감사한',
-  '잘생긴', '아름다운', '보고싶은', '멋진',
-  '귀여운', '소중한', '내 최애', '잊지 않을',
-];
-
-export default function Step2({ 
+export default function Step2({
   teacherName,
-  teacherImage,
-  onNext, 
-  onBack 
+  onSubmit,
+  onBack,
 }: Step2Props) {
-  const [selectedOption, setSelectedOption] = useState<string>('친애하는');
+  const [message, setMessage] = useState("");
+  const maxLength = 500;
 
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-  };
-
-  const handleNext = () => {
-    if (selectedOption) {
-      onNext(selectedOption);
+  const handleSubmit = () => {
+    if (message.trim()) {
+      onSubmit(message);
     }
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>어떤 호칭을 사용하시겠어요?</h1>
-      <div className={styles.optionsContainer}>
-        <div className={styles.optionsCard}>
-          <div className={styles.optionsGrid}>
-            {options.map((option, index) => (
-              <button
-                key={index}
-                className={`${styles.optionButton} ${
-                  selectedOption === option ? styles.optionButtonSelected : ''
-                }`}
-                onClick={() => handleOptionClick(option)}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
+      <h1 className={styles.title}>이제 편지를 작성해볼까요?</h1>
+
+      <div className={styles.letterCard}>
+        <div className={styles.letterHeader}>
+          <span className={styles.from}>From.</span>
+          <span className={styles.to}>
+            {teacherName}에게
+          </span>
+        </div>
+
+        <textarea
+          className={styles.textarea}
+          placeholder="내용을 입력해주세요."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          maxLength={maxLength}
+        />
+
+        <div className={styles.charCount}>
+          {message.length}/{maxLength}
         </div>
       </div>
 
       <div className={styles.buttonGroup}>
-        <button className={styles.nextButton} onClick={handleNext}>
-          다음
+        <button className={styles.submitButton} onClick={handleSubmit}>
+          제출
         </button>
         <button className={styles.backButton} onClick={onBack}>
           이전
