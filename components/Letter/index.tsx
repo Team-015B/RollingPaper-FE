@@ -1,4 +1,3 @@
-// index.tsx (LetterWriter 컴포넌트)
 "use client";
 
 import { useState, useEffect } from "react";
@@ -18,7 +17,6 @@ export default function LetterWriter() {
   const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
   const [message, setMessage] = useState("");
   
-  // 프로필 쿼리로 로그인 상태 확인
   const { data: profile, isLoading, isError } = useStudentProfile();
   const isLoggedIn = !!profile && !isError;
 
@@ -37,7 +35,7 @@ export default function LetterWriter() {
   };
 
   const handleBack = () => {
-    if (step === 3) {
+    if (step === 2) {
       setStep(1);
     }
   };
@@ -55,7 +53,6 @@ export default function LetterWriter() {
     );
   }
 
-  // 로그인되지 않았을 때
   if (!isLoggedIn) {
     return <LoginModal />;
   }
@@ -63,7 +60,7 @@ export default function LetterWriter() {
   return (
     <div>
       {step === 1 && <Step1 onNext={handleStep1Complete} />}
-      {step === 3 && selectedTeacher && (
+      {step === 2 && selectedTeacher && (
         <Step2
           teacherName={selectedTeacher.name}
           teacherImage={selectedTeacher.image}

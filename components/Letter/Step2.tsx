@@ -1,24 +1,43 @@
 import { useState } from "react";
 import * as styles from "./style.css"
+import { useSendLetterMutation } from "@/services/letter/letter.mutation";
 
 interface Step2Props {
-  teacherName: string;
-  teacherImage: string;
-  onSubmit: (message: string) => void;
+  teacherNickName: string;
+  image: File;
+  onSubmit: (content: string) => void;
   onBack: () => void;
 }
 
 export default function Step2({
-  teacherName,
+  teacherNickName,
+  image,
   onSubmit,
   onBack,
 }: Step2Props) {
-  const [message, setMessage] = useState("");
+  const [content, setcontent] = useState("");
   const maxLength = 500;
+  
+  const { mutate: sendLetter, isPending } = useSendLetterMutation();
 
   const handleSubmit = () => {
-    if (message.trim()) {
-      onSubmit(message);
+    if (content.trim()) {
+      sendLetter(
+        {
+          teacherNickName,
+          image,
+          content: content.trim(),
+        },
+        {
+          onSuccess: () => {
+            onSubmit(content);
+          },
+          onError: (error) => {
+            console.error("편지 전송 실패:", error);
+            alert("편지 전송에 실패했습니다. 다시 시도해주세요.");
+          },
+        }
+      );
     }
   };
 
@@ -30,28 +49,37 @@ export default function Step2({
         <div className={styles.letterHeader}>
           <span className={styles.from}>From.</span>
           <span className={styles.to}>
-            {teacherName}에게
+            {teacherNickName}에게
           </span>
         </div>
 
         <textarea
           className={styles.textarea}
           placeholder="내용을 입력해주세요."
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={content}
+          onChange={(e) => setcontent(e.target.value)}
           maxLength={maxLength}
+          disabled={isPending}
         />
 
         <div className={styles.charCount}>
-          {message.length}/{maxLength}
+          {content.length}/{maxLength}
         </div>
       </div>
 
       <div className={styles.buttonGroup}>
-        <button className={styles.submitButton} onClick={handleSubmit}>
-          제출
+        <button 
+          className={styles.submitButton} 
+          onClick={handleSubmit}
+          disabled={isPending}
+        >
+          {isPending ? "전송 중..." : "제출"}
         </button>
-        <button className={styles.backButton} onClick={onBack}>
+        <button 
+          className={styles.backButton} 
+          onClick={onBack}
+          disabled={isPending}
+        >
           이전
         </button>
       </div>
