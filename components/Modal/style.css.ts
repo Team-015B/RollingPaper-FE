@@ -29,7 +29,6 @@ export const title = style({
   textAlign: 'center',
   marginBottom: '40px',
   color: '#333',
-  fontFamily: 'serif'
 });
 
 export const inputGroup = style({
