@@ -40,10 +40,6 @@ export default function Step1({ onNext }: Step1Props) {
     }
   };
 
-  const handleBack = () => {
-    setSelectedTeacher(null);
-  };
-
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>어떤 선생님에게 편지를 쓰시겠어요?</h1>

@@ -2,7 +2,7 @@
 
 import { PropsWithChildren, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const Providers = ({ children }: PropsWithChildren) => {
   const [queryClient] = useState(
@@ -19,14 +19,14 @@ const Providers = ({ children }: PropsWithChildren) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <ToastContainer
+      <ToastContainer
         autoClose={3000}
         hideProgressBar
         closeOnClick
         pauseOnHover
         closeButton={false}
         className="toastify"
-      /> */}
+      />
       {children}
     </QueryClientProvider>
   );

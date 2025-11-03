@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import * as styles from "./style.css";
 import { useStudentSignInMutation } from "@/services/auth/auth.mutation";
 import { useQueryClient } from "@tanstack/react-query";
+import { Toastify } from "../Toastify";
 
 export default function LoginModal() {
   const [nickName, setNickName] = useState("");
@@ -14,7 +15,7 @@ export default function LoginModal() {
 
   const handleLogin = async () => {
     if (!nickName || !password) {
-      alert("아이디와 비밀번호를 모두 입력해주세요.");
+      Toastify({ type: "info", content: "아이디와 비밀번호를 모두 입력해주세요." });
       return;
     }
 
@@ -24,15 +25,14 @@ export default function LoginModal() {
       { nickName, password },
       {
         onSuccess: () => {
-          // 로그인 성공 시 프로필 쿼리 무효화하여 자동으로 재요청
           queryClient.invalidateQueries({ 
             queryKey: ["student", "profile"] 
           });
           setIsLoading(false);
-          alert("로그인 성공!");
+          Toastify({ type: "success", content: "로그인에 성공하셨습니다!" });
         },
-        onError: (error) => {
-          alert("로그인 실패: " + error.message);
+        onError: () => {
+          Toastify({ type: "error", content: "아이디 또는 비밀번호가 일치하지 않습니다." });
           setIsLoading(false);
         },
       }
