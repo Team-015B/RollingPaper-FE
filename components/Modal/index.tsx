@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import * as styles from "./style.css";
-import { useStudentSignInMutation } from "@/services/auth/auth.mutation";
+import { useSignInMutation } from "@/services/auth/auth.mutation";
 import { useQueryClient } from "@tanstack/react-query";
 import { Toastify } from "../Toastify";
 
@@ -10,7 +10,7 @@ export default function LoginModal() {
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const studentSignIn = useStudentSignInMutation();
+  const studentSignIn = useSignInMutation();
   const queryClient = useQueryClient();
 
   const handleLogin = async () => {

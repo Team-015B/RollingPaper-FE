@@ -1,15 +1,9 @@
 import { AuthType } from "@/types";
 import { useMutation } from "@tanstack/react-query";
-import { studentSignIn, teacherSignIn } from "./auth.api";
+import { signIn} from "./auth.api";
 
-export const useStudentSignInMutation = () => {
+export const useSignInMutation = () => {
   return useMutation({
-    mutationFn: (auth: AuthType) => studentSignIn(auth),
+    mutationFn: (auth: AuthType) => signIn(auth),
   });
 };
-
-export const useTeacherSignInMutation = () => {
-  return useMutation({
-    mutationFn: (auth: AuthType) => teacherSignIn(auth),
-  });
-}
