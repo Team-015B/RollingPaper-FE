@@ -10,3 +10,10 @@ export const sendLetter = async (letter: LetterType) => {
   });
   return data;
 };
+
+export const receivedLetter = async () => {
+  const { data } = await http.get("/letter/received", {
+    withCredentials: true,
+  });
+  return data;
+};

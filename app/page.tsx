@@ -1,7 +1,5 @@
-import LetterWriter from "@/components/Letter";
+import LoginModal from "@/components/Modal";
 
 export default function Home() {
-  return (
-      <LetterWriter />
-  );
+  return <LoginModal />;
 }
