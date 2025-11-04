@@ -3,15 +3,17 @@
 import React, { useState } from "react";
 import * as styles from "./style.css";
 import { useSignInMutation } from "@/services/auth/auth.mutation";
-import { useQueryClient } from "@tanstack/react-query";
+import { useGetProfile } from "@/services/auth/auth.query";
 import { Toastify } from "../Toastify";
+import { useRouter } from "next/navigation";
 
 export default function LoginModal() {
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const studentSignIn = useSignInMutation();
-  const queryClient = useQueryClient();
+  const { refetch: refetchProfile } = useGetProfile();
+  const router = useRouter();
 
   const handleLogin = async () => {
     if (!nickName || !password) {
@@ -24,12 +26,18 @@ export default function LoginModal() {
     studentSignIn.mutate(
       { nickName, password },
       {
-        onSuccess: () => {
-          queryClient.invalidateQueries({ 
-            queryKey: ["student", "profile"] 
-          });
+        onSuccess: async () => {
+          const { data: profileData } = await refetchProfile();
+          
           setIsLoading(false);
           Toastify({ type: "success", content: "로그인에 성공하셨습니다!" });
+          
+          console.log(profileData);
+          if (profileData?.role === "teacher") {
+            router.push("/teacher");
+          } else {
+            router.push("/student");
+          }
         },
         onError: () => {
           Toastify({ type: "error", content: "아이디 또는 비밀번호가 일치하지 않습니다." });

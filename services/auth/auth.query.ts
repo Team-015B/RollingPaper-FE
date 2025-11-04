@@ -3,7 +3,7 @@ import { getProfile } from "./auth.api";
 
 export const useGetProfile = () => {
   return useQuery({
-    queryKey: ["student", "profile"],
+    queryKey: ["profile"],
     queryFn: getProfile,
     staleTime: Infinity,
     gcTime: Infinity,

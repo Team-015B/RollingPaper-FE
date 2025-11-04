@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
-import LoginModal from "../Modal";
-import { useGetProfile } from "@/services/auth/auth.query";
 import { Toastify } from "../Toastify";
 
 interface Teacher {
@@ -13,12 +11,9 @@ interface Teacher {
   image: string;
 }
 
-export default function LetterWriter() {
+export default function Letter() {
   const [step, setStep] = useState(1);
   const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
-
-  const { data: profile, isLoading, isError } = useGetProfile();
-  const isLoggedIn = !!profile && !isError;
 
   const handleStep1Complete = (teacher: Teacher) => {
     setSelectedTeacher(teacher);
@@ -42,24 +37,8 @@ export default function LetterWriter() {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        로딩 중...
-      </div>
-    );
-  }
-
   return (
     <div>
-      {!isLoggedIn ? <LoginModal /> : null}
       {step === 1 && <Step1 onNext={handleStep1Complete} />}
       {step === 2 && selectedTeacher && (
         <Step2
