@@ -4,7 +4,7 @@ import { useState } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import LoginModal from "../Modal";
-import { useStudentProfile } from "@/services/auth/auth.query";
+import { useGetProfile } from "@/services/auth/auth.query";
 import { Toastify } from "../Toastify";
 
 interface Teacher {
@@ -17,7 +17,7 @@ export default function LetterWriter() {
   const [step, setStep] = useState(1);
   const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
 
-  const { data: profile, isLoading, isError } = useStudentProfile();
+  const { data: profile, isLoading, isError } = useGetProfile();
   const isLoggedIn = !!profile && !isError;
 
   const handleStep1Complete = (teacher: Teacher) => {

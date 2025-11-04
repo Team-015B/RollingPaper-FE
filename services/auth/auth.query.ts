@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { studentGetProfile } from "./auth.api";
+import { getProfile } from "./auth.api";
 
-export const useStudentProfile = () => {
+export const useGetProfile = () => {
   return useQuery({
     queryKey: ["student", "profile"],
-    queryFn: studentGetProfile,
+    queryFn: getProfile,
     staleTime: Infinity,
     gcTime: Infinity,
     retry: false,

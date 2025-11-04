@@ -5,7 +5,7 @@ import Providers from "./providers";
 
 export const metadata = generateOpenGraph({
   title: '3기 졸업생',
-  description: '어떤 선생님에게 편지를 쓰시겠어요?'
+  description: '3기 졸업생이 작성한 롤링페이퍼'
 })
 
 export default function RootLayout({
