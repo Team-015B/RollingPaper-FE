@@ -34,7 +34,7 @@ export default function LoginModal() {
           
           console.log(profileData);
           if (profileData?.role === "teacher") {
-            router.push("/teacher");
+            router.push(`/teacher/${profileData.id}`);
           } else {
             router.push("/student");
           }

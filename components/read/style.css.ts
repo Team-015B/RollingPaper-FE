@@ -1,5 +1,5 @@
 import { style, keyframes } from "@vanilla-extract/css";
-import { font } from "@/styles";
+import { font, theme } from "@/styles";
 
 const fadeIn = keyframes({
   from: { opacity: 0, transform: "translateY(20px)" },
@@ -30,23 +30,19 @@ export const container = style({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(255, 255, 255, 0.83)",
+    backgroundColor: "rgba(255, 255, 255, 0.96)",
     zIndex: 0,
   }
 });
 
 export const title = style({
   marginBottom: "48px",
-  color: "#2c2c2c",
+  color: theme.candy,
   textAlign: "center",
   position: "relative",
   zIndex: 1,
   fontSize: "36px",
   fontWeight: "700",
-  background: "linear-gradient(135deg, #B08968 0%, #8B6F47 100%)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
 });
 
 export const loading = style({
@@ -99,36 +95,67 @@ export const letterCard = style({
   
   ":hover": {
     transform: "translateY(-8px)",
-    boxShadow: "0 12px 32px rgba(176, 137, 104, 0.25)",
-    border: "2px solid #B08968",
+    boxShadow: "0 12px 32px rgba(176, 104, 129, 0.25)",
+    border: `2px solid ${theme.candy}`,
   }
 });
 
-export const imageWrapper = style({
+export const envelope = style({
   position: "relative",
   width: "100px",
-  height: "100px",
-  borderRadius: "50%",
-  overflow: "hidden",
-  border: "3px solid #B08968",
+  height: "70px",
+  backgroundColor: "#F5E6D3",
+  borderRadius: "4px",
   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-  backgroundColor: "#f5f5f5",
+  overflow: "hidden",
 });
 
-export const studentImage = style({
-  objectFit: "cover",
+export const envelopeFlap = style({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: 0,
+  height: 0,
+  borderLeft: "50px solid transparent",
+  borderRight: "50px solid transparent",
+  borderTop: `35px solid ${theme.candy}`,
+  zIndex: 2,
 });
 
-export const defaultAvatar = style({
-  width: "100%",
-  height: "100%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "36px",
-  fontWeight: "700",
-  color: "white",
-  background: "linear-gradient(135deg, #B08968 0%, #9A7556 100%)",
+export const envelopeLetter = style({
+  position: "absolute",
+  top: "15px",
+  left: "15px",
+  width: "70px",
+  height: "50px",
+  backgroundColor: "white",
+  borderRadius: "2px",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  zIndex: 1,
+});
+
+export const letterLines = style({
+  position: "absolute",
+  top: "12px",
+  left: "10px",
+  right: "10px",
+  
+  "::before": {
+    content: '""',
+    display: "block",
+    width: "100%",
+    height: "2px",
+    backgroundColor: "#E0E0E0",
+    marginBottom: "6px",
+  },
+  
+  "::after": {
+    content: '""',
+    display: "block",
+    width: "80%",
+    height: "2px",
+    backgroundColor: "#E0E0E0",
+  }
 });
 
 export const studentName = style({
@@ -179,7 +206,7 @@ export const modalContent = style({
     left: "12px",
     right: "12px",
     bottom: "12px",
-    border: "1px dashed #B08968",
+    border: `1px dashed ${theme.candy}`,
     borderRadius: "8px",
     pointerEvents: "none",
   },
@@ -215,7 +242,6 @@ export const closeButton = style({
   }
 });
 
-
 export const modalHeader = style({
   display: "flex",
   flexDirection: "column",
@@ -224,32 +250,26 @@ export const modalHeader = style({
   borderBottom: "1px solid #E5E5E5",
 });
 
-export const modalImageWrapper = style({
+export const envelopeSmall = style({
   position: "relative",
   width: "60px",
-  height: "60px",
-  borderRadius: "50%",
+  height: "42px",
+  backgroundColor: "#F5E6D3",
+  borderRadius: "3px",
+  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
   overflow: "hidden",
-  border: "2px solid #B08968",
-  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
   flexShrink: 0,
-  backgroundColor: "#f5f5f5",
 });
 
-export const modalImage = style({
-  objectFit: "cover",
-});
-
-export const defaultAvatarLarge = style({
-  width: "100%",
-  height: "100%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "24px",
-  fontWeight: "700",
-  color: "white",
-  background: "linear-gradient(135deg, #B08968 0%, #9A7556 100%)",
+export const envelopeFlapSmall = style({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: 0,
+  height: 0,
+  borderLeft: "30px solid transparent",
+  borderRight: "30px solid transparent",
+  borderTop: `21px solid ${theme.candy}`,
 });
 
 export const modalTitleWrapper = style({
@@ -289,4 +309,3 @@ export const letterContent = style({
   minHeight: "200px",
   wordBreak: "break-word",
 });
-
