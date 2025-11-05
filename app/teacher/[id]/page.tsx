@@ -1,4 +1,4 @@
-import Read from "@/components/read";
+import Read from "@/components/Read";
 
 export default function Teacher() {
   return <Read />;

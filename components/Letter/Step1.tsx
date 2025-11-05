@@ -11,7 +11,7 @@ interface Teacher {
 const teachers: Teacher[] = [
   { id: "jb", name: "황정배 선생님", image: "/황정배-선생님.png" },
   { id: "bg", name: "이보경 선생님", image: "/이보경-선생님.png" },
-  { id: "mj", name: "이민정 선생님", image: "/김민정-선생님.png" },
+  { id: "mj", name: "이민정 선생님", image: "/이민정-선생님.png" },
   { id: "sm", name: "이수민 선생님", image: "/이수민-선생님.png" },
   { id: "chj", name: "최훈주 선생님", image: "/최훈주-선생님.png" },
   { id: "sb", name: "서승범 선생님", image: "/서승범-선생님.png" },
