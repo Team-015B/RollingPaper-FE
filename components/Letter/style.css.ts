@@ -6,12 +6,12 @@ const buttonBaseStyle = {
   ":before": {
     content: '""',
     position: "absolute" as const,
-    top: "8px",
-    left: "8px",
-    right: "8px",
-    bottom: "8px",
-    border: "2px dashed rgba(255, 255, 255, 0.41)",
-    borderRadius: "8px",
+    top: "6px",
+    left: "6px",
+    right: "6px",
+    bottom: "6px",
+    border: "1px dashed white",
+    borderRadius: "10px",
     pointerEvents: "none" as const,
   },
 };
@@ -39,6 +39,14 @@ const bounceInAnimation = keyframes({
     transform: "rotate(3deg) scale3d(1, 1, 1)",
   },
 });
+
+export const bounceIn = style({
+  animation: `${bounceInAnimation} 1s ease-out forwards`,
+});
+
+// ============================================
+// Layout
+// ============================================
 
 export const container = style({
   width: "100%",
@@ -115,10 +123,6 @@ export const optionsCard = style({
   width: "100%",
 });
 
-export const bounceIn = style({
-  animation: `${bounceInAnimation} 1s ease-out forwards`,
-});
-
 export const teacherInfo = style({
   position: "absolute",
   top: "-40px",
@@ -172,34 +176,9 @@ export const optionButtonSelected = style({
   color: "#333",
 });
 
-export const nextButton = style({
-  ...font.btn1,
-  position: "relative",
-  width: "400px",
-  padding: "16px",
-  backgroundColor: `${theme.cookie}`,
-  color: "white",
-  border: "none",
-  borderRadius: "12px",
-  cursor: "pointer",
-  transition: "all 0.2s",
-
-  ":before": {
-    content: '""',
-    position: "absolute",
-    top: "6px",
-    left: "6px",
-    right: "6px",
-    bottom: "6px",
-    border: "1px dashed white",
-    borderRadius: "10px",
-    pointerEvents: "none",
-  },
-  ":disabled": {
-    opacity: 0.6,
-    cursor: "not-allowed",
-  },
-});
+// ============================================
+// Letter Section
+// ============================================
 
 export const letterCard = style({
   maxWidth: "600px",
@@ -210,7 +189,6 @@ export const letterCard = style({
   borderRadius: "12px",
   marginBottom: "20px",
   position: "relative",
-
   ":before": {
     content: '""',
     position: "absolute",
@@ -264,6 +242,34 @@ export const charCount = style({
   marginTop: "16px",
   paddingTop: "16px",
   borderTop: "1px solid #E5E5E5",
+});
+
+export const nextButton = style({
+  ...font.btn1,
+  position: "relative",
+  width: "400px",
+  padding: "16px",
+  backgroundColor: `${theme.cookie}`,
+  color: "white",
+  border: "none",
+  borderRadius: "12px",
+  cursor: "pointer",
+  transition: "all 0.2s",
+  ":before": {
+    content: '""',
+    position: "absolute",
+    top: "6px",
+    left: "6px",
+    right: "6px",
+    bottom: "6px",
+    border: "1px dashed white",
+    borderRadius: "10px",
+    pointerEvents: "none",
+  },
+  ":disabled": {
+    opacity: 0.6,
+    cursor: "not-allowed",
+  },
 });
 
 export const buttonGroup = style({

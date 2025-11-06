@@ -31,8 +31,6 @@ export default function LoginModal() {
           
           setIsLoading(false);
           Toastify({ type: "success", content: "로그인에 성공하셨습니다!" });
-          
-          console.log(profileData);
           if (profileData?.role === "teacher") {
             router.push(`/teacher/${profileData.id}`);
           } else {

@@ -48,7 +48,7 @@ export default function Step2({
         <div className={styles.letterHeader}>
           <span className={styles.from}>From.</span>
           <span className={styles.to}>
-            {teacherNickName}에게
+            사랑하는 {teacherNickName}에게
           </span>
         </div>
 
