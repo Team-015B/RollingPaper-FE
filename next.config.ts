@@ -6,7 +6,7 @@ const withVanillaExtract = createVanillaExtractPlugin({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withVanillaExtract({
-  
+  output: 'export',
 });
 
 export default nextConfig;

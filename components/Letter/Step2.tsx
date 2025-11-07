@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as styles from "./style.css"
 import { useSendLetterMutation } from "@/services/letter/letter.mutation";
+import { Toastify } from "../Toastify";
 
 interface Step2Props {
   teacherNickName: string;
@@ -32,11 +33,17 @@ export default function Step2({
           onSuccess: () => {
             onSubmit(content);
           },
-          onError: (error) => {
-            console.error("편지 전송 실패:", error);
+          onError: () => {
+            Toastify({type: "error", content: `편지 전송 중 오류가 발생했습니다. \n관리자에게 문의해주세요.`})
           },
         }
       );
+    }
+    else if (!content.trim()) {
+      Toastify({type: "info", content: "편지 내용을 입력하세요."})
+    }
+    else if (content.length > 0 && content[0] === " ") {
+      Toastify({type: "info", content: "편지 내용은 공백으로 시작할 수 없습니다."})
     }
   };
 
@@ -48,7 +55,7 @@ export default function Step2({
         <div className={styles.letterHeader}>
           <span className={styles.from}>From.</span>
           <span className={styles.to}>
-            사랑하는 {teacherNickName}에게
+             사랑하는 {teacherNickName}에게
           </span>
         </div>
 

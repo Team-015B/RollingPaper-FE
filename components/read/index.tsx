@@ -52,14 +52,11 @@ export default function Read() {
               >
                 <div className={styles.envelope}>
                   <div className={styles.envelopeFlap}></div>
-                  <div className={styles.envelopeLetter}>
+                  {/* <div className={styles.envelopeLetter}>
                     <div className={styles.letterLines}></div>
-                  </div>
+                  </div> */}
                 </div>
                 <p className={styles.studentName}>{letter.from}</p>
-                <p className={styles.date}>
-                  {new Date(letter.createdAt).toLocaleDateString("ko-KR")}
-                </p>
               </div>
             ))}
           </div>
@@ -85,9 +82,6 @@ export default function Read() {
                 <div
                   style={{ display: "flex", alignItems: "center", gap: "12px" }}
                 >
-                  <div className={styles.envelopeSmall}>
-                    <div className={styles.envelopeFlapSmall}></div>
-                  </div>
                   <div className={styles.modalTitleWrapper}>
                     <p className={styles.from}>From. {selectedLetter.from}</p>
                     <p className={styles.modalDate}>

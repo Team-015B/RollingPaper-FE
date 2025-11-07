@@ -107,7 +107,7 @@ export const envelope = style({
   backgroundColor: "#F5E6D3",
   borderRadius: "4px",
   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-  overflow: "hidden",
+  overflow: "visible",
 });
 
 export const envelopeFlap = style({
@@ -122,45 +122,10 @@ export const envelopeFlap = style({
   zIndex: 2,
 });
 
-export const envelopeLetter = style({
-  position: "absolute",
-  top: "15px",
-  left: "15px",
-  width: "70px",
-  height: "50px",
-  backgroundColor: "white",
-  borderRadius: "2px",
-  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-  zIndex: 1,
-});
-
-export const letterLines = style({
-  position: "absolute",
-  top: "12px",
-  left: "10px",
-  right: "10px",
-  
-  "::before": {
-    content: '""',
-    display: "block",
-    width: "100%",
-    height: "2px",
-    backgroundColor: "#E0E0E0",
-    marginBottom: "6px",
-  },
-  
-  "::after": {
-    content: '""',
-    display: "block",
-    width: "80%",
-    height: "2px",
-    backgroundColor: "#E0E0E0",
-  }
-});
 
 export const studentName = style({
   fontSize: "16px",
-  fontWeight: "600",
+  fontWeight: "500",
   color: "#333",
   textAlign: "center",
   marginTop: "4px",
@@ -252,13 +217,14 @@ export const modalHeader = style({
 
 export const envelopeSmall = style({
   position: "relative",
-  width: "60px",
-  height: "42px",
-  backgroundColor: "#F5E6D3",
+  width: "80px",
+  height: "100px",
+  backgroundColor: "white",
   borderRadius: "3px",
   boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-  overflow: "hidden",
+  overflow: "visible",
   flexShrink: 0,
+  border: "1px solid #E5E5E5",
 });
 
 export const envelopeFlapSmall = style({
@@ -267,9 +233,48 @@ export const envelopeFlapSmall = style({
   left: 0,
   width: 0,
   height: 0,
-  borderLeft: "30px solid transparent",
-  borderRight: "30px solid transparent",
-  borderTop: `21px solid ${theme.candy}`,
+  borderLeft: "40px solid transparent",
+  borderRight: "40px solid transparent",
+  borderBottom: `30px solid ${theme.candy}`,
+  transform: "translateY(-30px)",
+  zIndex: 2,
+});
+
+export const envelopeBodySmall = style({
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  right: 0,
+  height: "40px",
+  backgroundColor: "#F5E6D3",
+  borderRadius: "0 0 3px 3px",
+  zIndex: 1,
+});
+
+export const letterLinesSmall = style({
+  position: "absolute",
+  top: "20px",
+  left: "15px",
+  right: "15px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "8px",
+  
+  "::before": {
+    content: '""',
+    display: "block",
+    width: "100%",
+    height: "2px",
+    backgroundColor: "#E0E0E0",
+  },
+  
+  "::after": {
+    content: '""',
+    display: "block",
+    width: "80%",
+    height: "2px",
+    backgroundColor: "#E0E0E0",
+  }
 });
 
 export const modalTitleWrapper = style({

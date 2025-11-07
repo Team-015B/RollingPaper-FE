@@ -44,10 +44,6 @@ export const bounceIn = style({
   animation: `${bounceInAnimation} 1s ease-out forwards`,
 });
 
-// ============================================
-// Layout
-// ============================================
-
 export const container = style({
   width: "100%",
   minHeight: "100vh",
@@ -175,10 +171,6 @@ export const optionButtonSelected = style({
   borderRadius: "8px",
   color: "#333",
 });
-
-// ============================================
-// Letter Section
-// ============================================
 
 export const letterCard = style({
   maxWidth: "600px",
