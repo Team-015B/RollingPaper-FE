@@ -7,6 +7,9 @@ const withVanillaExtract = createVanillaExtractPlugin({
 /** @type {import('next').NextConfig} */
 const nextConfig = withVanillaExtract({
   output: 'export',
+  images: {
+    unoptimized: true,
+  },
 });
 
 export default nextConfig;
