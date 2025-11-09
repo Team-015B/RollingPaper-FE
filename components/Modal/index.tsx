@@ -6,6 +6,7 @@ import { useSignInMutation } from "@/services/auth/auth.mutation";
 import { useGetProfile } from "@/services/auth/auth.query";
 import { Toastify } from "../Toastify";
 import { useRouter } from "next/navigation";
+import Loading from "../Loading";
 
 export default function LoginModal() {
   const [nickName, setNickName] = useState("");
@@ -55,7 +56,6 @@ export default function LoginModal() {
     <div className={styles.overlay}>
       <div className={styles.modalCard}>
         <h1 className={styles.title}>Rolling Paper</h1>
-
         <div className={styles.inputGroup}>
           <label className={styles.label}>아이디</label>
           <input
