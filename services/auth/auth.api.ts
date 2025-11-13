@@ -12,6 +12,5 @@ export const getProfile = async () => {
   const { data } = await http.get("/auth/me", {
     withCredentials: true,
   });
-  console.log(data)
   return data;
 };

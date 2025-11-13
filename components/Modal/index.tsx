@@ -55,7 +55,7 @@ export default function LoginModal() {
     <>
       <div className={styles.overlay}>
         <div className={styles.modalCard}>
-          <h1 className={styles.title}>Rolling Paper</h1>
+          <h1 className={styles.title}>롤링페이퍼</h1>
           <div className={styles.inputGroup}>
             <label className={styles.label}>아이디</label>
             <input

@@ -10,7 +10,33 @@ export const overlay = style({
   bottom: 0,
   padding: '20px',
   zIndex: 1000,
-  backgroundColor: theme.background,
+  
+  '::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: "url(/background.png)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    filter: 'blur(4px)',
+    opacity: 0.4,
+    zIndex: -1,
+  },
+  
+  '::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: theme.background,
+    opacity: 0.55,
+    zIndex: -1,
+  }
 });
 
 export const modalCard = style({
@@ -23,7 +49,7 @@ export const modalCard = style({
 });
 
 export const title = style({
-  ...font.H4,
+  ...font.H1,
   textAlign: 'center',
   marginBottom: '40px',
   color: '#333',
