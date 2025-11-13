@@ -2,6 +2,7 @@ import "./globals.css";
 import generateOpenGraph from "@/utils/generateOpenGraph";
 import * as styles from "./layout.css";
 import Providers from "./providers";
+import Warning from "./warning";
 
 export const metadata = generateOpenGraph({
   title: '3기 졸업생',
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <Providers>
+        <Warning />
         <main className={styles.container}>
           {children}
         </main>
