@@ -1,5 +1,5 @@
 import { style, keyframes } from "@vanilla-extract/css";
-import { font, theme } from "@/styles";
+import { font, theme, flex } from "@/styles";
 
 const buttonBaseStyle = {
   position: "relative" as const,
@@ -45,12 +45,9 @@ export const bounceIn = style({
 });
 
 export const container = style({
+  ...flex.COLUMN_CENTER,
   width: "100%",
   minHeight: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
   padding: "20px",
 });
 
@@ -74,9 +71,7 @@ export const teacherGrid = style({
 });
 
 export const teacherCard = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+  ...flex.COLUMN_CENTER,
   gap: "12px",
   padding: "16px",
   border: "2px solid transparent",
@@ -102,9 +97,7 @@ export const teacherName = style({
 });
 
 export const optionsContainer = style({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  ...flex.CENTER,
   maxWidth: "800px",
   width: "100%",
   position: "relative",
@@ -120,12 +113,10 @@ export const optionsCard = style({
 });
 
 export const teacherInfo = style({
+  ...flex.COLUMN_CENTER,
   position: "absolute",
   top: "-40px",
   right: "-70px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
   gap: "12px",
   backgroundColor: "white",
   padding: "20px",
@@ -195,8 +186,7 @@ export const letterCard = style({
 });
 
 export const letterHeader = style({
-  display: "flex",
-  justifyContent: "space-between",
+  ...flex.BETWEEN,
   alignItems: "flex-start",
   marginBottom: "24px",
   paddingBottom: "16px",
@@ -241,7 +231,7 @@ export const nextButton = style({
   position: "relative",
   width: "400px",
   padding: "16px",
-  backgroundColor: `${theme.cookie}`,
+  backgroundColor: theme.cookie,
   color: "white",
   border: "none",
   borderRadius: "12px",
@@ -265,8 +255,7 @@ export const nextButton = style({
 });
 
 export const buttonGroup = style({
-  display: "flex",
-  flexDirection: "column",
+  ...flex.COLUMN_CENTER,
   gap: "16px",
   width: "400px",
 });
@@ -276,7 +265,7 @@ export const submitButton = style({
   ...buttonBaseStyle,
   width: "100%",
   padding: "16px",
-  backgroundColor: `${theme.cookie}`,
+  backgroundColor: theme.cookie,
   color: "white",
   border: "none",
   borderRadius: "12px",
@@ -289,7 +278,7 @@ export const backButton = style({
   ...buttonBaseStyle,
   width: "100%",
   padding: "16px",
-  backgroundColor: `${theme.candy}`,
+  backgroundColor: theme.candy,
   color: "#FFF",
   border: "none",
   borderRadius: "12px",

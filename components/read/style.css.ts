@@ -1,5 +1,5 @@
 import { style, keyframes } from "@vanilla-extract/css";
-import { font, theme } from "@/styles";
+import { font, theme, flex, screen } from "@/styles";
 
 const fadeIn = keyframes({
   from: { opacity: 0, transform: "translateY(20px)" },
@@ -12,11 +12,9 @@ const scaleIn = keyframes({
 });
 
 export const container = style({
+  ...flex.COLUMN_VERTICAL,
   width: "100%",
   minHeight: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
   padding: "60px 20px 40px",
   backgroundImage: "url(/background.png)",
   backgroundSize: "cover",
@@ -36,28 +34,27 @@ export const container = style({
 });
 
 export const title = style({
+  ...font.H1,
   marginBottom: "48px",
   color: theme.candy,
   textAlign: "center",
   position: "relative",
   zIndex: 1,
-  fontSize: "36px",
-  fontWeight: "700",
 });
 
 export const loading = style({
-  fontSize: "18px",
+  ...font.p1,
   color: "#666",
   position: "relative",
   zIndex: 1,
 });
 
 export const emptyState = style({
+  ...font.p1,
   position: "relative",
   zIndex: 1,
   padding: "60px 40px",
   textAlign: "center",
-  fontSize: "18px",
   color: "#999",
 });
 
@@ -72,7 +69,7 @@ export const letterGrid = style({
   padding: "0 20px",
   
   "@media": {
-    "screen and (max-width: 768px)": {
+    [`screen and (max-width: ${screen.phone})`]: {
       gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
       gap: "16px",
     }
@@ -80,9 +77,7 @@ export const letterGrid = style({
 });
 
 export const letterCard = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+  ...flex.COLUMN_CENTER,
   gap: "12px",
   padding: "24px 16px",
   borderRadius: "20px",
@@ -122,31 +117,27 @@ export const envelopeFlap = style({
   zIndex: 2,
 });
 
-
 export const studentName = style({
-  fontSize: "16px",
-  fontWeight: "500",
+  ...font.btn1,
   color: "#333",
   textAlign: "center",
   marginTop: "4px",
 });
 
 export const date = style({
-  fontSize: "12px",
+  ...font.p4,
   color: "#999",
   textAlign: "center",
 });
 
 export const modalOverlay = style({
+  ...flex.CENTER,
   position: "fixed",
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
   backgroundColor: "rgba(0, 0, 0, 0.7)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
   zIndex: 1000,
   padding: "20px",
   animation: `${fadeIn} 0.3s ease-out`,
@@ -177,7 +168,7 @@ export const modalContent = style({
   },
   
   "@media": {
-    "screen and (max-width: 768px)": {
+    [`screen and (max-width: ${screen.phone})`]: {
       padding: "32px 24px",
       maxHeight: "90vh",
     }
@@ -185,20 +176,18 @@ export const modalContent = style({
 }); 
 
 export const closeButton = style({
+  ...flex.CENTER,
+  ...font.H4,
   position: "absolute",
   top: "26px",
   right: "26px",
   background: "white",
   border: "none",
-  fontSize: "20px",
   cursor: "pointer",
   color: "#999",
   width: "15px",
   height: "15px",
   borderRadius: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
   transition: "all 0.2s",
   zIndex: 10,
   
@@ -208,8 +197,7 @@ export const closeButton = style({
 });
 
 export const modalHeader = style({
-  display: "flex",
-  flexDirection: "column",
+  ...flex.COLUMN_FLEX,
   marginBottom: "24px",
   paddingBottom: "16px",
   borderBottom: "1px solid #E5E5E5",
@@ -252,12 +240,11 @@ export const envelopeBodySmall = style({
 });
 
 export const letterLinesSmall = style({
+  ...flex.COLUMN_FLEX,
   position: "absolute",
   top: "20px",
   left: "15px",
   right: "15px",
-  display: "flex",
-  flexDirection: "column",
   gap: "8px",
   
   "::before": {
@@ -278,21 +265,19 @@ export const letterLinesSmall = style({
 });
 
 export const modalTitleWrapper = style({
-  display: "flex",
-  flexDirection: "column",
+  ...flex.COLUMN_FLEX,
   gap: "4px",
   flex: 1,
 });
 
 export const from = style({
-  fontSize: "18px",
-  fontWeight: "600",
+  ...font.H5,
   color: "#333",
   margin: 0,
 });
 
 export const to = style({
-  fontSize: "14px",
+  ...font.p3,
   color: "#666",
   textAlign: "right",
   margin: 0,
@@ -300,15 +285,13 @@ export const to = style({
 });
 
 export const modalDate = style({
-  fontSize: "13px",
+  ...font.p4,
   color: "#999",
   margin: 0,
 });
 
 export const letterContent = style({
-  fontSize: "16px",
-  lineHeight: "1.8",
-  color: "#333",
+  ...font.p2,
   whiteSpace: "pre-wrap",
   padding: "20px 0",
   minHeight: "200px",

@@ -1,15 +1,13 @@
-import { theme } from "@/styles";
+import { theme, flex, font } from "@/styles";
 import { style } from "@vanilla-extract/css";
 
 export const overlay = style({
-    position: 'fixed',
+  ...flex.CENTER,
+  position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
   padding: '20px',
   zIndex: 1000,
   backgroundColor: theme.background,
@@ -25,8 +23,7 @@ export const modalCard = style({
 });
 
 export const title = style({
-  fontSize: '24px',
-  fontWeight: '500',
+  ...font.H4,
   textAlign: 'center',
   marginBottom: '40px',
   color: '#333',
@@ -41,17 +38,16 @@ export const inputGroupLast = style({
 });
 
 export const label = style({
+  ...font.p3,
   display: 'block',
-  fontSize: '14px',
   color: '#666',
   marginBottom: '8px',
-  fontWeight: '400'
 });
 
 export const input = style({
+  ...font.p2,
   width: '100%',
   padding: '12px 0',
-  fontSize: '15px',
   border: 'none',
   borderBottom: '1px dotted #D4C4B0',
   outline: 'none',
@@ -60,21 +56,15 @@ export const input = style({
 });
 
 export const loginButton = style({
+  ...font.btn1,
   width: '100%',
   padding: '16px',
-  backgroundColor: '#B08968',
+  backgroundColor: theme.cookie,
   color: 'white',
   border: 'none',
   borderRadius: '12px',
-  fontSize: '16px',
-  fontWeight: '500',
   cursor: 'pointer',
   transition: 'all 0.2s',
-  
-  
-  ':hover': {
-    backgroundColor: '#9A7556'
-  },
   
   ':disabled': {
     cursor: 'not-allowed',
