@@ -18,4 +18,4 @@ const generateOpenGraph = <OG extends { title: string; description: string }>({
   },
 });
 
-export default generateOpenGraph;
+export default generateOpenGraph;  
