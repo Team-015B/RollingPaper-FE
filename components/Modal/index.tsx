@@ -30,7 +30,6 @@ export default function LoginModal() {
         onSuccess: async () => {
           const { data: profileData } = await refetchProfile();
           
-          setIsLoading(false);
           Toastify({ type: "success", content: "로그인에 성공하셨습니다!" });
           if (profileData?.role === "teacher") {
             router.push(`/teacher/${profileData.id}`);
@@ -53,41 +52,62 @@ export default function LoginModal() {
   };
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.modalCard}>
-        <h1 className={styles.title}>Rolling Paper</h1>
-        <div className={styles.inputGroup}>
-          <label className={styles.label}>아이디</label>
-          <input
-            type="text"
-            value={nickName}
-            onChange={(e) => setNickName(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder=""
-            className={styles.input}
-          />
-        </div>
+    <>
+      <div className={styles.overlay}>
+        <div className={styles.modalCard}>
+          <h1 className={styles.title}>Rolling Paper</h1>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>아이디</label>
+            <input
+              type="text"
+              value={nickName}
+              onChange={(e) => setNickName(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder=""
+              className={styles.input}
+              disabled={isLoading}
+            />
+          </div>
 
-        <div className={styles.inputGroupLast}>
-          <label className={styles.label}>비밀번호</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder=""
-            className={styles.input}
-          />
-        </div>
+          <div className={styles.inputGroupLast}>
+            <label className={styles.label}>비밀번호</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder=""
+              className={styles.input}
+              disabled={isLoading}
+            />
+          </div>
 
-        <button
-          onClick={handleLogin}
-          disabled={isLoading}
-          className={styles.loginButton}
-        >
-          {isLoading ? "로그인 중..." : "로그인"}
-        </button>
+          <button
+            onClick={handleLogin}
+            disabled={isLoading}
+            className={styles.loginButton}
+          >
+            로그인
+          </button>
+        </div>
       </div>
-    </div>
+      
+      {isLoading && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 9999
+        }}>
+          <Loading />
+        </div>
+      )}
+    </>
   );
 }

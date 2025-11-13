@@ -22,8 +22,8 @@ export const loading = style({
 export const spinner = style({
   width: "48px",
   height: "48px",
-  border: `6px solid ${theme.candy}`,
-  borderTop: "6px solid #E37272",
+  border: `4px solid ${theme.candy}`,
+  borderTop: "4px solid #E37272",
   borderRadius: "50%",
   animation: `${spin} 1s linear infinite`,
 });

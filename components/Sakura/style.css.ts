@@ -2,30 +2,43 @@ import { style, keyframes } from "@vanilla-extract/css";
 
 const fall = keyframes({
   "0%": { 
-    transform: "translate3d(0, -10%, 0) rotateZ(0deg)", 
-    opacity: 1 
+    transform: "translate3d(0, -10%, 0)", 
+    opacity: 0 
   },
-  "25%": {
-    transform: "translate3d(-20px, 25vh, 0) rotateZ(90deg)",
+  "10%": {
+    opacity: 1,
   },
-  "50%": {
-    transform: "translate3d(20px, 50vh, 0) rotateZ(180deg)",
+  "20%": {
+    transform: "translate3d(-15px, 20vh, 0)",
   },
-  "75%": {
-    transform: "translate3d(-10px, 75vh, 0) rotateZ(270deg)",
+  "40%": {
+    transform: "translate3d(25px, 40vh, 0)",
+  },
+  "60%": {
+    transform: "translate3d(-20px, 60vh, 0)",
+  },
+  "80%": {
+    transform: "translate3d(15px, 80vh, 0)",
   },
   "100%": { 
-    transform: "translate3d(0px, 100vh, 0) rotateZ(360deg)", 
-    opacity: 0.2 
+    transform: "translate3d(-10px, 105vh, 0)", 
+    opacity: 0.3 
   },
 });
 
 const sway = keyframes({
-  "0%": { transform: "translateX(0px) rotateY(0deg)" },
-  "25%": { transform: "translateX(15px) rotateY(90deg)" },
-  "50%": { transform: "translateX(0px) rotateY(180deg)" },
-  "75%": { transform: "translateX(-15px) rotateY(270deg)" },
-  "100%": { transform: "translateX(0px) rotateY(360deg)" },
+  "0%, 100%": { 
+    transform: "rotateX(0deg) rotateY(0deg) rotateZ(0deg)" 
+  },
+  "25%": { 
+    transform: "rotateX(30deg) rotateY(45deg) rotateZ(-15deg)" 
+  },
+  "50%": { 
+    transform: "rotateX(-20deg) rotateY(90deg) rotateZ(20deg)" 
+  },
+  "75%": { 
+    transform: "rotateX(25deg) rotateY(135deg) rotateZ(-10deg)" 
+  },
 });
 
 export const sakuraContainer = style({
