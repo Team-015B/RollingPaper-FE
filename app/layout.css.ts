@@ -7,3 +7,10 @@ export const container = style({
   backgroundColor: theme.background,
   ...flex.COLUMN_CENTER,
 });
+
+export const notFound = style({
+  width: "100%",
+  height: "100vh",
+  backgroundColor: theme.background,
+  ...flex.COLUMN_CENTER,
+})
