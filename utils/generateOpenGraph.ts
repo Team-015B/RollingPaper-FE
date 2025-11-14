@@ -2,7 +2,7 @@ const generateOpenGraph = <OG extends { title: string; description: string }>({
   title,
   description,
 }: OG) => ({
-  // metadataBase: new URL(""),
+  metadataBase: new URL("https://rolling-paper-3rd.vercel.app"),
   title: `롤링페이퍼 - ${title}`,
   description,
   icons: { icon: "/icon.svg" },
