@@ -16,7 +16,7 @@ interface Letter {
   };
 }
 
-export default function Read() {
+export default function Read() { 
   const { data, isLoading } = useReceivedLetter();
   const [selectedLetter, setSelectedLetter] = useState<Letter | null>(null);
 
