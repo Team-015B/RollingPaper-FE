@@ -4,6 +4,8 @@ import { useState } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { Toastify } from "../Toastify";
+import { logout } from "@/services/auth/auth.api";
+import * as styles from "./style.css"
 
 interface Teacher {
   id: string;
@@ -20,11 +22,7 @@ export default function Letter() {
     setStep(2);
   };
 
-  const handleStep2Complete = (msg: string) => {
-    console.log({
-      teacher: selectedTeacher,
-      message: msg,
-    });
+  const handleStep2Complete = () => {
     Toastify({ type: "success", content: "편지가 성공적으로 전송되었습니다!" });
     setStep(1);
     setSelectedTeacher(null);
@@ -37,8 +35,15 @@ export default function Letter() {
     }
   };
 
+  const handleLogout = () => {
+    logout()
+  }
+
   return (
     <div>
+      <div className={styles.logoutContainer}>
+        <button className={styles.logoutButton} onClick={handleLogout}>로그아웃</button>
+      </div>
       {step === 1 && <Step1 onNext={handleStep1Complete} />}
       {step === 2 && selectedTeacher && (
         <Step2

@@ -284,3 +284,29 @@ export const backButton = style({
   borderRadius: "12px",
   cursor: "pointer",
 });
+
+export const logoutContainer = style({
+  position: "fixed",
+  top: "20px",
+  right: "20px",
+  zIndex: 1000,
+});
+
+export const logoutButton = style({
+  ...font.btn2,
+  padding: "10px 20px",
+  backgroundColor: "#FF6B6B",
+  color: "white",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+  transition: "all 0.2s",
+  ":hover": {
+    backgroundColor: "#FF5252",
+    transform: "translateY(-2px)",
+  },
+  ":disabled": {
+    opacity: 0.6,
+    cursor: "not-allowed",
+  },
+});

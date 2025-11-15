@@ -14,3 +14,10 @@ export const getProfile = async () => {
   });
   return data;
 };
+
+export const logout = async () => {
+  const { data } = await http.post("/auth/logout", null, {
+    withCredentials: true,
+  });
+  return data;
+};
