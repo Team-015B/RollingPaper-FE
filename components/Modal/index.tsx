@@ -7,6 +7,7 @@ import { useGetProfile } from "@/services/auth/auth.query";
 import { Toastify } from "../Toastify";
 import { useRouter } from "next/navigation";
 import Loading from "../Loading";
+import Cookies from "js-cookie"; 
 
 export default function LoginModal() {
   const [nickName, setNickName] = useState("");
@@ -30,7 +31,13 @@ export default function LoginModal() {
         onSuccess: async () => {
           const { data: profileData } = await refetchProfile();
           
+          if (profileData) {
+            Cookies.set('role', profileData.role, { expires: 7 });
+            Cookies.set('id', profileData.id.toString(), { expires: 7 });
+          }
+          
           Toastify({ type: "success", content: "로그인에 성공하셨습니다!" });
+          
           if (profileData?.role === "teacher") {
             router.replace(`/teacher/${profileData.id}`);
           } else {
