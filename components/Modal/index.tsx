@@ -32,9 +32,9 @@ export default function LoginModal() {
           
           Toastify({ type: "success", content: "로그인에 성공하셨습니다!" });
           if (profileData?.role === "teacher") {
-            router.push(`/teacher/${profileData.id}`);
+            router.replace(`/teacher/${profileData.id}`);
           } else {
-            router.push("/student");
+            router.replace("/student");
           }
         },
         onError: () => {
