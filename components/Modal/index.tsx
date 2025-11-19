@@ -7,38 +7,45 @@ import { useGetProfile } from "@/services/auth/auth.query";
 import { Toastify } from "../Toastify";
 import { useRouter } from "next/navigation";
 import Loading from "../Loading";
-import Cookies from "js-cookie"; 
+import Cookies from "js-cookie";
+
+function LoadingOverlay() {
+  return <Loading />;
+}
 
 export default function LoginModal() {
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const studentSignIn = useSignInMutation();
   const { refetch: refetchProfile } = useGetProfile();
   const router = useRouter();
 
+  const isLoading = studentSignIn.isPending;
+
   const handleLogin = async () => {
     if (!nickName || !password) {
-      Toastify({ type: "info", content: "아이디와 비밀번호를 모두 입력해주세요." });
+      Toastify({
+        type: "info",
+        content: "아이디와 비밀번호를 모두 입력해주세요.",
+      });
       return;
     }
-
-    setIsLoading(true);
 
     studentSignIn.mutate(
       { nickName, password },
       {
         onSuccess: async () => {
           const { data: profileData } = await refetchProfile();
-          
-           if (profileData) {
-            Cookies.set('role', profileData.role, { expires: 7 });
-            Cookies.set('id', profileData.id.toString(), { expires: 7 });
-          }
-          
+
           if (profileData) {
-            Toastify({ type: "success", content: "로그인에 성공하셨습니다!" });
-            
+            Cookies.set("role", profileData.role, { expires: 7 });
+            Cookies.set("id", profileData.id.toString(), { expires: 7 });
+
+            Toastify({
+              type: "success",
+              content: "로그인에 성공하셨습니다!",
+            });
+
             if (profileData.role === "teacher") {
               router.replace(`/teacher/${profileData.id}`);
             } else if (profileData.role === "student") {
@@ -47,8 +54,10 @@ export default function LoginModal() {
           }
         },
         onError: () => {
-          Toastify({ type: "error", content: "아이디 또는 비밀번호가 일치하지 않습니다." });
-          setIsLoading(false);
+          Toastify({
+            type: "error",
+            content: "아이디 또는 비밀번호가 일치하지 않습니다.",
+          });
         },
       }
     );
@@ -96,27 +105,12 @@ export default function LoginModal() {
             disabled={isLoading}
             className={styles.loginButton}
           >
-            로그인
+            {isLoading ? "로그인 중..." : "로그인"}
           </button>
         </div>
       </div>
-      
-      {isLoading && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 9999
-        }}>
-          <Loading />
-        </div>
-      )}
+
+      {isLoading && <LoadingOverlay />}
     </>
   );
 }
