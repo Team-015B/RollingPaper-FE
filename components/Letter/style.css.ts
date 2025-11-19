@@ -212,6 +212,10 @@ export const textarea = style({
   outline: "none",
   color: "#333",
   resize: "none",
+  scrollbarColor: "#e0e0e0 transparent",
+  "::-webkit-scrollbar": {
+    display: "none"
+  },
   "::placeholder": {
     color: "#999",
   },
