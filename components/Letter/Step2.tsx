@@ -17,7 +17,7 @@ export default function Step2({
   onBack,
 }: Step2Props) {
   const [content, setcontent] = useState("");
-  const maxLength = 500;
+  const maxLength = 1000;
   
   const { mutate: sendLetter, isPending } = useSendLetterMutation();
 
